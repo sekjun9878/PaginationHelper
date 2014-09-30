@@ -1,38 +1,27 @@
-name: Pagination
-version: 1.1.1
-description: "**Pagination** is a very useful plugin to help navigate a large collection of pages, such as for a **blog**."
+name: PaginationHelper
+version: 1.0.0
+description: **PaginationHelper** is a pagination plugin for theme developers based on Team Grav's original Pagination implementation.
 icon: chevron-circle-right
 author:
-  name: Team Grav
-  email: devs@getgrav.org
-  url: http://getgrav.org
-homepage: https://github.com/getgrav/grav-plugin-pagination
-keywords: pagination, plugin, pages, navigation
-bugs: https://github.com/getgrav/grav-plugin-pagination/issues
+    name: Michael Yoo
+    email: michael@yoo.id.au
+    url: https://www.michael.yoo.id.au/
+homepage: https://github.com/sekjun9878/PaginationHelper
+keywords: pagination, helper, plugin, pages, navigation
+bugs: https://github.com/sekjun9878/PaginationHelper/issues
 license: MIT
 
 validation: strict
 
 form:
-  fields:
-    enabled:
-      type: toggle
-      label: Plugin status
-      highlight: 1
-      default: 0
-      options:
-        1: Enabled
-        0: Disabled
-      validate:
-        type: bool
-
-    built_in_css:
-      type: toggle
-      label: Use built in CSS
-      highlight: 1
-      default: 1
-      options:
-        1: Enabled
-        0: Disabled
-      validate:
-        type: bool
+    fields:
+        enabled:
+            type: toggle
+            label: Plugin Status
+            highlight: true
+            default: false
+            options:
+                true: Enabled
+                false: Disabled
+            validate:
+                type: bool

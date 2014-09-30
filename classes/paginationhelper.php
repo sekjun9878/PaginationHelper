@@ -1,5 +1,5 @@
 <?php
-namespace Grav\Plugin;
+namespace sekjun9878\Plugin\PaginationHelper;
 
 use Grav\Common\Iterator;
 use Grav\Common\Page\Collection;
@@ -12,6 +12,7 @@ class PaginationHelper extends Iterator
     protected $current;
     protected $items_per_page;
     protected $page_count;
+    protected $items;
 
     /**
      * Create and initialize pagination.
@@ -24,6 +25,7 @@ class PaginationHelper extends Iterator
 
         $params = $collection->params();
 
+        /** @var \Grav\Common\Uri $uri */
         $uri = self::$grav['uri'];
         $this->current = $uri->currentPage();
 
@@ -33,6 +35,26 @@ class PaginationHelper extends Iterator
         for ($x=1; $x <= $this->page_count; $x++) {
             $this->items[$x] = new PaginationPage($x, '/page:'.$x);
         }
+    }
+
+    /**
+     * Returns the current number of pagination.
+     *
+     * @return int
+     */
+    public function current()
+    {
+        return $this->current;
+    }
+
+    /**
+     * Returns a collection of PaginationPages.
+     *
+     * @return array
+     */
+    public function pages()
+    {
+        return $this->items;
     }
 
     /**
