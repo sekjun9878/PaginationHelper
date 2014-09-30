@@ -1,8 +1,7 @@
 <?php
-namespace Grav\Plugin;
+namespace sekjun9878\Plugin\PaginationHelper;
 
-use \Grav\Common\Registry;
-use \Grav\Common\GravTrait;
+use Grav\Common\GravTrait;
 
 class PaginationPage
 {

@@ -1,13 +1,12 @@
 <?php
-namespace Grav\Plugin;
+namespace sekjun9878\Plugin\PaginationHelper;
 
-use Grav\Common\Grav;
 use Grav\Common\Page\Collection;
 use Grav\Common\Page\Page;
 use Grav\Common\Plugin;
 use Grav\Component\EventDispatcher\Event;
 
-class PaginationPlugin extends Plugin
+class PaginationHelperPlugin extends Plugin
 {
     /**
      * @var PaginationHelper
@@ -19,17 +18,8 @@ class PaginationPlugin extends Plugin
      */
     public static function getSubscribedEvents() {
         return [
-            'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
             'onPageInitialized' => ['onPageInitialized', 0],
         ];
-    }
-
-    /**
-     * Add current directory to twig lookup paths.
-     */
-    public function onTwigTemplatePaths()
-    {
-        $this->grav['twig']->twig_paths[] = __DIR__ . '/templates';
     }
 
     /**
@@ -40,10 +30,9 @@ class PaginationPlugin extends Plugin
         /** @var Page $page */
         $page = $this->grav['page'];
 
-        if ($page && $page->value('header.pagination')) {
+        if ($page && ($page->value('header.content.pagination') == 'enabled')) {
             $this->enable([
                 'onCollectionProcessed' => ['onCollectionProcessed', 0],
-                'onTwigSiteVariables' => ['onTwigSiteVariables', 0]
             ]);
         }
     }
@@ -68,16 +57,6 @@ class PaginationPlugin extends Plugin
             require_once __DIR__ . '/classes/paginationhelper.php';
             $this->pagination = new PaginationHelper($collection);
             $collection->setParams(['pagination' => $this->pagination]);
-        }
-    }
-
-    /**
-     * Set needed variables to display pagination.
-     */
-    public function onTwigSiteVariables()
-    {
-        if ($this->config->get('plugins.pagination.built_in_css')) {
-            $this->grav['assets']->add('plugin://pagination/css/pagination.css');
         }
     }
 }
