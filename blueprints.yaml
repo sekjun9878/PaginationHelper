@@ -1,6 +1,6 @@
 name: PaginationHelper
-version: 1.0.0
-description: **PaginationHelper** is a pagination plugin for theme developers based on Team Grav's original Pagination implementation.
+version: 1.2.1
+description: "**PaginationHelper** is a pagination plugin for theme developers based on Team Grav's original Pagination implementation."
 icon: chevron-circle-right
 author:
     name: Michael Yoo
